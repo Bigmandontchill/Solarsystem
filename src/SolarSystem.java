@@ -125,7 +125,7 @@ public class SolarSystem extends JFrame
 
 		double rads = Math.toRadians(angle);
 		double x = (int) (centreOfRotationX + distance * Math.sin(rads)) - diameter / 2;
-		double y = (int) (centreOfRotationY + distance * Math.cos(rads)) - diameter / 2;
+		double y = (int) (centreOfRotationY + distance * Math.cos(rads))- diameter / 2;
 
 		synchronized (this)
 		{
