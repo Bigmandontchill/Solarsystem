@@ -64,9 +64,9 @@ public class SolarSystem extends JFrame {
 				g.clearRect(0, 0, width, height);
 				for (SolarObject t : things) {
 					g.setColor(this.getColourFromString(t.col));
-					double rads = Math.toRadians(t.angle);
+					double rads = Math.toRadians(t.getAngle());
 					double x = ( t.CenterX+t.r * Math.sin(rads)) - t.diameter / 2;
-					double y = ( t.Centery+ t.r * Math.cos(rads)) - t.diameter / 2;
+					double y = ( t.CenterY+ t.r * Math.cos(rads)) - t.diameter / 2;
 					g.fillOval((int) x, (int) y, t.diameter, t.diameter);
 
 					//try{ Thread.sleep(0); } catch (Exception e) {} 
@@ -237,6 +237,19 @@ public class SolarSystem extends JFrame {
 				AddSolarObject(t);
 			}
 
+		}
+	}
+	public void update(SolarSystem system){
+		Sun sun = new Sun(0, 0, 100, "YELLOW", system.getWidth() / 2, system.getHeight() / 2);
+		Planet planet = new Planet(0, 140, 30, "RED", 0, 0);
+		Moon moon=new Moon(0,40,10,"BLUE",0,0);
+		while (true) {
+			system.Draw(sun);
+			planet.move(0.5, sun, system);
+			system.Draw(planet);
+			moon.move(2,planet,system,sun);
+			system.Draw(moon);
+		system.finishedDrawing();
 		}
 	}
 }

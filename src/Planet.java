@@ -6,14 +6,12 @@ public class Planet extends  SolarObject {
     }
 
     public void move(double velocity,Sun sun,SolarSystem system){
-        angle+=velocity;
-        double centrerads = Math.toRadians(sun.angle);
+        IncreaseAngle(velocity);
+        double centrerads = Math.toRadians(sun.getAngle());
         double centreOfRotationX = (system.getWidth()/2) + sun.r * Math.sin(centrerads);
         double centreOfRotationY = (system.getHeight()/2) +sun.r * Math.cos(centrerads);
         CenterX=centreOfRotationX;
-        Centery=centreOfRotationY;
+        CenterY=centreOfRotationY;
     }
-
-
 
 }
